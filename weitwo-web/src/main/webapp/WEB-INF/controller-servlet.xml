@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
                     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd     
                     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
@@ -10,15 +9,12 @@
 	<!-- JSR-303 support will be detected on classpath and enabled automatically -->
 	<mvc:annotation-driven />
 
-	<context:component-scan base-package="com.caveup.app.cmgr.web.module" />
+	<context:component-scan base-package="com.caveup.weitwo.web.controller" />
 
-	<bean
-		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
-	<bean
-		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
+	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
 
-	<bean
-		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
 		<property name="mediaTypes">
 			<map>
 				<entry key="xml" value="application/xml" />
@@ -28,10 +24,8 @@
 		<property name="viewResolvers">
 			<list>
 				<bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />
-				<bean id="viewResolver"
-					class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-					<property name="viewClass"
-						value="org.springframework.web.servlet.view.JstlView" />
+				<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+					<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
 					<property name="prefix" value="/WEB-INF/jsp/" />
 					<property name="suffix" value=".jsp" />
 				</bean>
@@ -39,16 +33,9 @@
 		</property>
 	</bean>
 
-	<bean id="multipartResolver"
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<!-- one of the properties available; the maximum file size in bytes -->
 		<property name="maxUploadSize" value="10000000" />
 	</bean>
-
-	<!-- Resources -->
-	<mvc:default-servlet-handler />
-	<mvc:resources mapping="/easyui/**" location="/easyui/" />
-	<mvc:resources mapping="/bootstrap/**" location="/bootstrap/" />
-	<mvc:resources mapping="/resources/**" location="/resources/" />
 
 </beans>
