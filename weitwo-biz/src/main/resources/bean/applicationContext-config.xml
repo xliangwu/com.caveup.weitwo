@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+           http://www.springframework.org/schema/aop 
+           http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+           http://www.springframework.org/schema/tx 
+           http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
+	<bean id="propertyPlaceholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:config/weixin.properties</value>
+			</list>
+		</property>
+		<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_FALLBACK" />
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+		<property name="order" value="1" />
+	</bean>
+
+	<bean id="weiConfig" class="com.caveup.weitwo.biz.bean.WeiConfig" scope="singleton">
+		<property name="corpId" value="${wx.corp.id}" />
+		<property name="corpSecret" value="${wx.corp.secret}" />
+		<property name="token" value="${wx.token}" />
+		<property name="httpProxyHost" value="${wx.http.proxy.host}" />
+		<property name="httpProxyPort" value="${wx.http.proxy.port}" />
+		<property name="httpProxyUsername" value="${wx.http.proxy.username}" />
+		<property name="httpProxyPassword" value="${wx.http.proxy.password}" />
+	</bean>
+
+	<bean id="weiApiUrlTemplate" class="com.caveup.weitwo.biz.core.WeiApiUrlTemplate" scope="singleton" />
+</beans>
