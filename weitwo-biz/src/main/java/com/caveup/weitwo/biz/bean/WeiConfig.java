@@ -11,6 +11,7 @@ public class WeiConfig implements Serializable {
     private String corpSecret;
     private String token;
     private String encodingAESKey;
+    private int encryptType;
 
     /** proxy **/
     private String httpProxyHost;
@@ -80,6 +81,14 @@ public class WeiConfig implements Serializable {
 
     public void setEncodingAESKey(String encodingAESKey) {
         this.encodingAESKey = encodingAESKey;
+    }
+
+    public int getEncryptType() {
+        return encryptType;
+    }
+
+    public void setEncryptType(int encryptType) {
+        this.encryptType = encryptType;
     }
 
 }

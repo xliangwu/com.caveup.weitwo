@@ -22,6 +22,7 @@
 		<property name="corpId" value="${wx.corp.id}" />
 		<property name="corpSecret" value="${wx.corp.secret}" />
 		<property name="token" value="${wx.token}" />
+		<property name="encryptType" value="${wx.encrypt.mode}" />
 		<property name="httpProxyHost" value="${wx.http.proxy.host}" />
 		<property name="httpProxyPort" value="${wx.http.proxy.port}" />
 		<property name="httpProxyUsername" value="${wx.http.proxy.username}" />

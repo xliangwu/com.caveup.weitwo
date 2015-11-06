@@ -9,5 +9,6 @@
            http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
 
 	<bean id="accessTokenService" class="com.caveup.weitwo.biz.service.impl.AccessTokenServiceImpl" p:weiConfig-ref="weiConfig" p:urlTemplate-ref="weiApiUrlTemplate" />
+	<bean id="wxService" class="com.caveup.weitwo.biz.service.impl.WxServiceImpl" p:weiConfig-ref="weiConfig" />
 
 </beans>

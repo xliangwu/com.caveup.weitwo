@@ -10,6 +10,9 @@ public class ServiceTest extends TestSupport {
     @Resource
     private AccessTokenService accessTokenService;
 
+    @Resource
+    private WxService wxService;
+
     @Test
     public void testAccessToken() {
         Assert.notNull(accessTokenService);
@@ -26,5 +29,11 @@ public class ServiceTest extends TestSupport {
         accessTokenService.refresh(false);
         Assert.notNull(WeiSession.getInstance().getAccessToken());
         System.out.println(WeiSession.getInstance().getAccessToken());
+    }
+
+    @Test
+    public void testSign() {
+        boolean valid = wxService.checkSignature("11", "11111", "111", "23424234");
+        Assert.isTrue(!valid, "valid request");
     }
 }
