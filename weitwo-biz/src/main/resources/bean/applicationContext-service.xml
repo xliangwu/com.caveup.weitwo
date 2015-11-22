@@ -11,4 +11,5 @@
 	<bean id="accessTokenService" class="com.caveup.weitwo.biz.service.impl.AccessTokenServiceImpl" p:weiConfig-ref="weiConfig" p:urlTemplate-ref="weiApiUrlTemplate" />
 	<bean id="wxService" class="com.caveup.weitwo.biz.service.impl.WxServiceImpl" p:weiConfig-ref="weiConfig" />
 
+	<bean id="messageService" class="com.caveup.weitwo.biz.service.impl.MessageServiceImpl" />
 </beans>
