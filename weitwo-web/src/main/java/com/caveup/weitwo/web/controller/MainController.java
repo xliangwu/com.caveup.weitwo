@@ -16,6 +16,7 @@ public class MainController extends AbstractController {
     private static final long serialVersionUID = -22248706779491438L;
     private static final Logger LOGGER = LoggerFactory.getLogger(MainController.class);
     private static final String ROOT_VIEW = "index";
+    private static final String LOGIN_VIEW = "login";
 
     @RequestMapping("/api")
     @ResponseBody
@@ -42,5 +43,10 @@ public class MainController extends AbstractController {
     @RequestMapping("/index.html")
     public String index() {
         return ROOT_VIEW;
+    }
+
+    @RequestMapping("/login")
+    public String login() {
+        return LOGIN_VIEW;
     }
 }
