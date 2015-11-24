@@ -10,7 +10,7 @@
 <meta name="author" content="">
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="css/wt.css" rel="stylesheet">
-<title>登入</title>
+<title>用户登录</title>
 <!--[if lt IE 9]>
 	<script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -19,26 +19,38 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-4 col-md-offset-4">
+			<div class="col-md-5 col-md-offset-4">
 				<div class="login-panel panel panel-default">
 					<div class="panel-heading">
-						帐号登录
+						<h4>帐号登录</h4>
 					</div>
 					<div class="panel-body">
-						<form role="form">
-							<fieldset>
-								<div class="form-group">
-									<input class="form-control" placeholder="E-mail" name="email" type="email" autofocus="">
+						<form class="form-horizontal" role="form" action="vlogin" method="post">
+							<div class="form-group">
+								<label for="userEmail" class="col-sm-2 control-label">账户</label>
+								<div class="col-sm-10">
+									<input class="form-control" placeholder="邮箱" id="userEmail" name="userEmail" type="email" autofocus="">
 								</div>
-								<div class="form-group">
-									<input class="form-control" placeholder="Password" name="password" type="password" value="">
+							</div>
+							<div class="form-group">
+								<label for="userPassword" class="col-sm-2 control-label">密码</label>
+								<div class="col-sm-10">
+									<input type="password" class="form-control" id="userPassword" name="userPassword" placeholder="密码">
 								</div>
-								<div class="checkbox">
-									<label> <input name="remember" type="checkbox" value="Remember Me"><span>&nbsp;记住我</span></label>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-offset-2 col-sm-10">
+									<div class="checkbox">
+										<label> <input type="checkbox"> 记住我
+										</label>
+									</div>
 								</div>
-								<!-- Change this to a button or input when using this as a form -->
-								<a href="index.html" class="btn btn-lg btn-primary btn-block">登录</a>
-							</fieldset>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-offset-2 col-sm-10">
+									<button type="submit" class="btn btn-lg btn-success btn-block">登录</button>
+								</div>
+							</div>
 						</form>
 					</div>
 				</div>

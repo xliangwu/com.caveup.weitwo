@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.caveup.app.cmgr.mapper.UserMgrMapper">
+	<resultMap id="MemberRM" type="Member">
+		<result column="id" property="id" jdbcType="INTEGER" />
+		<result column="account" property="account" jdbcType="VARCHAR" />
+		<result column="password" property="encryptPassword" jdbcType="VARCHAR" />
+		<result column="activation" property="activation" jdbcType="VARCHAR" />
+		<result column="status" property="status" jdbcType="VARCHAR" />
+		<result column="email" property="email" jdbcType="VARCHAR" />
+		<result column="last_login" property="lastLogin" jdbcType="TIMESTAMP" />
+		<result column="login_count" property="loginCount" jdbcType="INTEGER" />
+		<result column="ctime" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="address_1" property="address1" jdbcType="VARCHAR" />
+		<result column="address_2" property="address2" jdbcType="VARCHAR" />
+		<result column="phone_number" property="phoneNumber" jdbcType="VARCHAR" />
+		<result column="role" property="roleType" jdbcType="VARCHAR" />
+		<result column="city" property="city" jdbcType="VARCHAR" />
+		<result column="state" property="state" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<insert id="insert" parameterType="Member" useGeneratedKeys="true" keyProperty="id">
+		insert into member (
+		account,
+		password,
+		activation,
+		status,
+		email,
+		last_login,
+		login_count,
+		ctime,
+		address_1,
+		address_2,
+		phone_number,
+		city,
+		state,
+		role)
+		values (
+		#{account},
+		#{encryptPassword},
+		#{activation},
+		#{status},
+		#{email},
+		null,
+		0,
+		now(),
+		#{address1},
+		#{address2},
+		#{phoneNumber},
+		#{city},
+		#{state},
+		#{roleType}
+		)
+	</insert>
+	<select id="findByEmail" resultMap="MemberRM">
+		select * from member where email=#{email}
+		<if test="type != null">
+			and role = #{type}
+		</if>
+	</select>
+	<select id="findById" resultMap="MemberRM">
+		select * from member where id=#{id}
+	</select>
+
+	<update id="updateLogin" parameterType="Member">
+		update member set last_login=#{lastLogin},
+		login_count = ${loginCount}
+		where email = #{email}
+	</update>
+
+	<select id="getUserByPrimaryKey" resultMap="MemberRM">
+		select * from member where id=#{id}
+	</select>
+
+	<update id="updateMemberById" parameterType="Member">
+		update member set
+		account=#{account},
+		password=#{encryptPassword},
+		activation=#{activation},
+		status=#{status},
+		email=#{email},
+		address_1=#{address1},
+		address_2=#{address2},
+		phone_number=#{phoneNumber},
+		city=#{city},
+		state=#{state},
+		role=#{roleType}
+		where id = #{id}
+	</update>
+	<delete id="deleteMemberById">
+		delete from member where id=#{id}
+	</delete>
+
+</mapper>

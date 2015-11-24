@@ -1,6 +1,5 @@
 package com.caveup.weitwo.biz.service;
 
-import static org.junit.Assert.*;
 import java.io.InputStream;
 import javax.annotation.Resource;
 import javax.xml.bind.JAXBException;

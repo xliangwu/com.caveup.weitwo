@@ -4,6 +4,7 @@ import javax.annotation.Resource;
 import org.junit.Test;
 import org.springframework.util.Assert;
 import com.caveup.weitwo.biz.core.WeiSession;
+import com.caveup.weitwo.biz.domain.dataobject.Member;
 
 public class ServiceTest extends TestSupport {
 
@@ -12,6 +13,9 @@ public class ServiceTest extends TestSupport {
 
     @Resource
     private WxService wxService;
+
+    @Resource
+    private SSOService ssoService;
 
     @Test
     public void testAccessToken() {
@@ -35,5 +39,11 @@ public class ServiceTest extends TestSupport {
     public void testSign() {
         boolean valid = wxService.checkSignature("11", "11111", "111", "23424234");
         Assert.isTrue(!valid, "valid request");
+    }
+
+    @Test
+    public void testMember() {
+        Member member = ssoService.getUserByPrimaryKey(1L);
+        Assert.isNull(member);
     }
 }

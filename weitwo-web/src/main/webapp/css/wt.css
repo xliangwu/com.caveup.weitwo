@@ -1,7 +1,9 @@
 @CHARSET "UTF-8";
 
 body {
-	background-color: #f8f8f8;
+	font-size:15px;
+	font-family: "Helvetica Neue", Helvetica, Microsoft Yahei,
+		Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
 }
 
 .login-panel {

@@ -8,12 +8,10 @@
            http://www.springframework.org/schema/tx 
            http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
 
-	<bean id="accessTokenService" class="com.caveup.weitwo.biz.service.impl.AccessTokenServiceImpl" p:weiConfig-ref="weiConfig" p:urlTemplate-ref="weiApiUrlTemplate" />
-	<bean id="wxService" class="com.caveup.weitwo.biz.service.impl.WxServiceImpl" p:weiConfig-ref="weiConfig" />
-	<bean id="messageService" class="com.caveup.weitwo.biz.service.impl.MessageServiceImpl" />
-
-	<bean id="abstractDaoService" class="com.caveup.weitwo.biz.service.impl.AbstractDaoService" abstract="true">
-		<property name="userMemberMapper" ref="userMemberMapper" />
+	<!-- sns_support -->
+	<bean id="userMemberMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.caveup.weitwo.biz.mybatis.mapper.UserMemberMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
-	<bean id="ssoServiceImpl" class="com.caveup.weitwo.biz.service.impl.SSOServiceImpl" parent="abstractDaoService" />
+
 </beans>
