@@ -21,7 +21,12 @@
 	<servlet-mapping>
 		<!-- for common view url -->
 		<servlet-name>controller</servlet-name>
-		<url-pattern>*.html</url-pattern>
+		<url-pattern>/admin/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<!-- for common view url -->
+		<servlet-name>controller</servlet-name>
+		<url-pattern>/auth/*</url-pattern>
 	</servlet-mapping>
 
 	<filter>
