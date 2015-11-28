@@ -11,8 +11,11 @@ import org.springframework.util.Assert;
 
 import com.caveup.weitwo.biz.bean.ImageRequestMsg;
 import com.caveup.weitwo.biz.bean.LinkRequestMsg;
+import com.caveup.weitwo.biz.bean.LocationEventMsg;
 import com.caveup.weitwo.biz.bean.LocationRequestMsg;
+import com.caveup.weitwo.biz.bean.MenuEventMsg;
 import com.caveup.weitwo.biz.bean.Message;
+import com.caveup.weitwo.biz.bean.SubscribeEventMsg;
 import com.caveup.weitwo.biz.bean.TextRequestMsg;
 import com.caveup.weitwo.biz.bean.VideoRequestMsg;
 import com.caveup.weitwo.biz.bean.VoiceRequestMsg;
@@ -89,6 +92,66 @@ public class ReqMsgTest extends TestSupport {
         InputStream is = this.getClass().getResourceAsStream("/messages/LinkMsg.xml");
         InputStreamReader sr = new InputStreamReader(is, "utf-8");
         Message tm =  messageService.unmarshallerReqMsg(sr, LinkRequestMsg.class);
+        System.out.println(tm.toString());
+        Assert.notNull(tm);
+    }
+    
+    @Test
+    public void testNormalSubscribeEvent() throws JAXBException, UnsupportedEncodingException {
+        Assert.notNull(messageService);
+        InputStream is = this.getClass().getResourceAsStream("/messages/NormalSubscribeEvent.xml");
+        InputStreamReader sr = new InputStreamReader(is, "utf-8");
+        Message tm =  messageService.unmarshallerReqMsg(sr, SubscribeEventMsg.class);
+        System.out.println(tm.toString());
+        Assert.notNull(tm);
+    }
+    
+    @Test
+    public void test2SubscribeEvent() throws JAXBException, UnsupportedEncodingException {
+        Assert.notNull(messageService);
+        InputStream is = this.getClass().getResourceAsStream("/messages/2SubscribeEvent.xml");
+        InputStreamReader sr = new InputStreamReader(is, "utf-8");
+        Message tm =  messageService.unmarshallerReqMsg(sr, SubscribeEventMsg.class);
+        System.out.println(tm.toString());
+        Assert.notNull(tm);
+    }
+    
+    @Test
+    public void testScanEvent() throws JAXBException, UnsupportedEncodingException {
+        Assert.notNull(messageService);
+        InputStream is = this.getClass().getResourceAsStream("/messages/ScanEvent.xml");
+        InputStreamReader sr = new InputStreamReader(is, "utf-8");
+        Message tm =  messageService.unmarshallerReqMsg(sr, SubscribeEventMsg.class);
+        System.out.println(tm.toString());
+        Assert.notNull(tm);
+    }
+    
+    @Test
+    public void testLocationEvent() throws JAXBException, UnsupportedEncodingException {
+        Assert.notNull(messageService);
+        InputStream is = this.getClass().getResourceAsStream("/messages/LocationEvent.xml");
+        InputStreamReader sr = new InputStreamReader(is, "utf-8");
+        Message tm =  messageService.unmarshallerReqMsg(sr, LocationEventMsg.class);
+        System.out.println(tm.toString());
+        Assert.notNull(tm);
+    }
+    
+    @Test
+    public void testMenu1Event() throws JAXBException, UnsupportedEncodingException {
+        Assert.notNull(messageService);
+        InputStream is = this.getClass().getResourceAsStream("/messages/Menu1Event.xml");
+        InputStreamReader sr = new InputStreamReader(is, "utf-8");
+        Message tm =  messageService.unmarshallerReqMsg(sr, MenuEventMsg.class);
+        System.out.println(tm.toString());
+        Assert.notNull(tm);
+    }
+    
+    @Test
+    public void testMenu2Event() throws JAXBException, UnsupportedEncodingException {
+        Assert.notNull(messageService);
+        InputStream is = this.getClass().getResourceAsStream("/messages/Menu2Event.xml");
+        InputStreamReader sr = new InputStreamReader(is, "utf-8");
+        Message tm =  messageService.unmarshallerReqMsg(sr, MenuEventMsg.class);
         System.out.println(tm.toString());
         Assert.notNull(tm);
     }
