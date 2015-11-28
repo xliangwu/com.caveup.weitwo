@@ -17,6 +17,10 @@ public abstract class AbstractController implements Serializable {
         return null == req.getSession().getAttribute(Constants.KEY_SESSION_USER);
     }
 
+    protected void logout(HttpServletRequest req) {
+        req.getSession().setAttribute(Constants.KEY_SESSION_USER, null);
+    }
+
     public WxService getWxService() {
         return wxService;
     }

@@ -43,7 +43,7 @@ public class ServiceTest extends TestSupport {
 
     @Test
     public void testMember() {
-        Member member = ssoService.getUserByPrimaryKey(1L);
+        Member member = ssoService.getUserByPrimaryKey(-1L);
         Assert.isNull(member);
     }
 }

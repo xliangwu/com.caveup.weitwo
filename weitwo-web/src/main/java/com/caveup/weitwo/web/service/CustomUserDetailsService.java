@@ -5,7 +5,6 @@ import java.util.Collection;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -18,7 +17,7 @@ import com.caveup.weitwo.biz.service.SSOService;
 public class CustomUserDetailsService implements UserDetailsService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CustomUserDetailsService.class);
-    @Autowired
+
     protected SSOService ssoService;
 
     @Override
@@ -30,8 +29,8 @@ public class CustomUserDetailsService implements UserDetailsService {
             if (null == member) {
                 new UsernameNotFoundException("Error in retrieving user : " + email);
             }
-            user = new User(member.getAccount(), member.getPassword1(), member.isActive(), true, true, true,
-                    getDefaultAuthorities());
+            user = new User(member.getAccount(), member.getEncryptPassword(), member.isActive(), true, true,
+                    true, getDefaultAuthorities());
         } catch (Exception e) {
             LOGGER.error("Error in retrieving user", e);
             throw new UsernameNotFoundException("Error in retrieving user");
@@ -51,6 +50,10 @@ public class CustomUserDetailsService implements UserDetailsService {
         authList.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
 
         return authList;
+    }
+
+    public void setSsoService(SSOService ssoService) {
+        this.ssoService = ssoService;
     }
 
 }

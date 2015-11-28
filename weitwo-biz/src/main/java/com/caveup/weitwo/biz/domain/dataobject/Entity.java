@@ -3,12 +3,13 @@ package com.caveup.weitwo.biz.domain.dataobject;
 import java.io.Serializable;
 import java.util.UUID;
 
-public class Entity implements Serializable {
+public abstract class Entity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private long              id;
-    private boolean           active;
+    private long id;
+
+    public abstract boolean isActive();
 
     public long getId() {
         return id;
@@ -22,11 +23,4 @@ public class Entity implements Serializable {
         return UUID.randomUUID().toString().replaceAll("-", "");
     }
 
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
-    }
 }

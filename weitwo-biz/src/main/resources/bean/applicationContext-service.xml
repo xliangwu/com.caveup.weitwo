@@ -15,5 +15,5 @@
 	<bean id="abstractDaoService" class="com.caveup.weitwo.biz.service.impl.AbstractDaoService" abstract="true">
 		<property name="userMemberMapper" ref="userMemberMapper" />
 	</bean>
-	<bean id="ssoServiceImpl" class="com.caveup.weitwo.biz.service.impl.SSOServiceImpl" parent="abstractDaoService" />
+	<bean id="ssoService" class="com.caveup.weitwo.biz.service.impl.SSOServiceImpl" parent="abstractDaoService" />
 </beans>
