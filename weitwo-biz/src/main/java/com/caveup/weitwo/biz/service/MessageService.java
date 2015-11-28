@@ -1,11 +1,16 @@
 package com.caveup.weitwo.biz.service;
 
-import java.io.InputStream;
+import java.io.Reader;
+import java.io.Writer;
+
 import javax.xml.bind.JAXBException;
-import com.caveup.weitwo.biz.bean.RequestMessage;
+
+import com.caveup.weitwo.biz.bean.Message;
 
 public interface MessageService {
 
-    public RequestMessage unmarshallerRequestMessage(InputStream xml) throws JAXBException;
+    public <T> T unmarshallerReqMsg(Reader xml, Class<T> clazz) throws JAXBException;
+    
+    public Writer marshallerResMsg(Message response) throws JAXBException;
 
 }
